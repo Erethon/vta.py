@@ -3,17 +3,15 @@ vta.py is a simple Python implementation of the VirusTotal public API https://ww
 
 I use it to sort my malware samples, so it's lacking a lot of functionalities the full VT API supports. For the time being vta.py can only be used to scan files/urls and get back the results of said scans.
 
-It can be used both as a library in a Python program or as a standalone CLI application. It needs ansicolors[1] and requests[2] to work.
+It can be used both as a library in a Python program or as a standalone CLI application. It needs ansicolors([1]) and requests([2]) to work.
  
 ## Usage as a CLI app
 Scanning a url:
 <pre>
 python vtwrapper.py -u erethon.com
 </pre>
-
-<pre>
 or use '' for weird urls
-
+<pre>
 python vtwrapper.py -u 'erethon.com/weird-url-!chars' 
 </pre>
 
