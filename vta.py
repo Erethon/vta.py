@@ -18,17 +18,17 @@ class vtapi():
     #Print results from a file/url
     def print_scan_results(self, results):
         if results['response_code'] == 0:
-            print "Url not found, or scanned yet. Try again later"
+            print "Url/file not found, or scanned yet. Try again later"
         else:
             print ("""Permalink: %s \nScandate: %s \n"""
                    % (results['permalink'], results['scan_date']))
-        for i in results['scans']:
-            print("%s: " % i),
-            if (str(results['scans'][i]['detected']) == "False"):
+            for i in results['scans']:
+                print("%s: " % i),
+                if (str(results['scans'][i]['detected']) == "False"):
                     print green("Clean")
-            else:
+                else:
                     print (red("Malicious -- %s"
-                           % str(results['scans'][i]['result'])))
+                               % str(results['scans'][i]['result'])))
 
     #Print reply for a url scan request
     def print_url_scan(self, results):
