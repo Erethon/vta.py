@@ -3,7 +3,7 @@ vta.py is a simple Python implementation of the VirusTotal public API https://ww
 
 I use it to sort my malware samples, so it's lacking a lot of functionalities the full VT API supports. For the time being vta.py can only be used to scan files/urls and get back the results of said scans.
 
-It can be used both as a library in a Python program or as a standalone CLI application. It needs ansicolors([1]) and requests([2]) to work.
+It can be used both as a library in a Python program or as a standalone CLI application. It needs requests([2]) to work. If you have ansicolors installed, results are colored depending if a url/file is malicious or not.
  
 ## Usage as a CLI app
 Scanning a url:
@@ -52,5 +52,5 @@ vt.scanurl("URL") -- Submits URL to be scanned
 </pre>
 
 
-[1]: https://pypi.python.org/pypi/ansicolors
-[2]: https://gist.github.com/kennethreitz/973705
+[1]: https://gist.github.com/kennethreitz/973705
+[2]: https://pypi.python.org/pypi/ansicolors

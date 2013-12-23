@@ -18,7 +18,8 @@ except ImportError:
 
 
 class vtapi():
-    def __init__(self):
+    def __init__(self, verbose=False):
+        self.verbose = verbose
         #self.api = "ASWGFHAHJGASDAGHHKHEGWARJLQGEIQYEQWIUAGHDASD"
         self.api = "INSERT YOUR VIRUS TOTAL PUBLIC API HERE"
         self.baseurl = "https://www.virustotal.com/vtapi/v2/"
@@ -37,17 +38,23 @@ class vtapi():
                 else:
                     print (red("Malicious -- %s"
                                % str(results['scans'][i]['result'])))
+        if self.verbose:
+            print results
 
     #Print reply for a url scan request
     def print_url_scan(self, results):
         print ("""Permalink: %s \nURL: %s \nDate: %s \nID: %s"""
                % (results['permalink'], results['resource'],
                   results['scan_date'], results['scan_id']))
+        if self.verbose:
+            print results
 
     #Print reply for a file scan request
     def print_file_scan(self, results):
         print results['verbose_msg']
         print "Permalink: %s" % results['permalink']
+        if self.verbose:
+            print results
 
     #Checking if any `networking` related errors occured
     def check_results(self, r):

@@ -11,20 +11,22 @@ import hashlib
 
 def parse_options():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-u', '--url', dest='url',
-                        help='URL to scan')
-    parser.add_argument('-F', '--results-file', dest='sfile',
-                        help='Get report of previously scanned file')
-    parser.add_argument('-r', '--results', dest='url_res',
-                        help='Get report of previously scanned url')
-    parser.add_argument('-f', '--file', dest='file',
-                        help='Scan file')
+    parser.add_argument("-u", "--url", dest="url",
+                        help="URL to scan")
+    parser.add_argument("-F", "--results-file", dest="sfile",
+                        help="Get report of previously scanned file")
+    parser.add_argument("-r", "--results", dest="url_res",
+                        help="Get report of previously scanned url")
+    parser.add_argument("-f", "--file", dest="file",
+                        help="Scan file")
+    parser.add_argument("-v", "--verbose", default=False, action="store_true",
+                        dest="verbose", help="Print complete reply")
     return parser.parse_args()
 
 
 def main():
     arg = parse_options()
-    vt = vtapi()
+    vt = vtapi(arg.verbose)
 
     #Scan url
     if arg.url:
