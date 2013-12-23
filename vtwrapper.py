@@ -14,8 +14,10 @@ def parse_options():
     parser.add_argument("-u", "--url", dest="url",
                         help="URL to scan")
     parser.add_argument("-F", "--results-file", dest="sfile",
-                        help="Get report of previously scanned file")
-    parser.add_argument("-r", "--results", dest="url_res",
+                        help="Get report of previously scanned file. If the "
+                        "given filename cannot be found/opened, we'll assume "
+                        "it's a hash.")
+    parser.add_argument("-U", "--results", dest="url_res",
                         help="Get report of previously scanned url")
     parser.add_argument("-f", "--file", dest="file",
                         help="Scan file")
@@ -34,14 +36,14 @@ def main():
 
     #Get results of file
     elif arg.sfile:
-        fhash = hashlib.sha256()
         try:
             f = open(arg.sfile, "r")
+            fhash = hashlib.sha256()
+            fhash.update(str(f.read()))
+            value = fhash.hexdigest()
         except:
-            print "Could not open file"
-            exit(1)
-        fhash.update(str(f.read()))
-        vt.print_scan_results(vt.results("file", fhash.hexdigest()))
+            value = arg.sfile
+        vt.print_scan_results(vt.results("file", value))
 
     #Get results of url
     elif arg.url_res:

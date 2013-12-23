@@ -39,6 +39,7 @@ class vtapi():
                     print (red("Malicious -- %s"
                                % str(results['scans'][i]['result'])))
         if self.verbose:
+            print
             print results
 
     #Print reply for a url scan request
@@ -47,6 +48,7 @@ class vtapi():
                % (results['permalink'], results['resource'],
                   results['scan_date'], results['scan_id']))
         if self.verbose:
+            print
             print results
 
     #Print reply for a file scan request
@@ -54,6 +56,7 @@ class vtapi():
         print results['verbose_msg']
         print "Permalink: %s" % results['permalink']
         if self.verbose:
+            print
             print results
 
     #Checking if any `networking` related errors occured
