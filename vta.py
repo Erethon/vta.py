@@ -6,7 +6,15 @@
 
 import requests
 import json
-from colors import red, green
+
+try:
+    from colors import red, green
+except ImportError:
+    def nothing(val):
+            return val
+    global red
+    global green
+    red = green = nothing
 
 
 class vtapi():

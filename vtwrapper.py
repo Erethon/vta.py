@@ -7,7 +7,6 @@
 from vta import vtapi
 import argparse
 import hashlib
-from colors import red, green
 
 
 def parse_options():
